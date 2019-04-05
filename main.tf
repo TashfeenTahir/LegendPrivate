@@ -9,25 +9,34 @@ resource "azurerm_virtual_network" "HubVNET" {
   address_space = ["172.20.0.0/16"]
   location      = "${azurerm_resource_group.HubRG.location}"
   resource_group_name = "${azurerm_resource_group.HubRG.name}"
-
-  subnet {
+}
+resource "azurerm_subnet "GatewaySubnet" {
     name           = "GatewaySubnet"
     address_prefix = "172.20.31.0/24"
-  }
-  subnet {
+    location      = "${azurerm_resource_group.HubRG.location}"
+    resource_group_name = "${azurerm_resource_group.HubRG.name}"
+}
+resource "azurerm_subnet" "MGMT1-Subnet" {
     name           = "leg-muks-p-vnet-mgmt1"
     address_prefix = "172.20.0.0/24"
+    location      = "${azurerm_resource_group.HubRG.location}"
+    resource_group_name = "${azurerm_resource_group.HubRG.name}"
   }
-  subnet {
+resource "azurerm_subnet" "WEB1-Subnet" {
     name           = "leg-muks-p-vnet-web1"
     address_prefix = "172.20.8.0/25"
+    location      = "${azurerm_resource_group.HubRG.location}"
+    resource_group_name = "${azurerm_resource_group.HubRG.name}"
   }
-  subnet {
+resource "azurerm_subnet" "APP1-Subnet" {
     name           = "leg-muks-p-vnet-app1"
     address_prefix = "172.20.16.0/25"
+    location      = "${azurerm_resource_group.HubRG.location}"
+    resource_group_name = "${azurerm_resource_group.HubRG.name}"
   }
-  subnet {
+resource "azurerm_subnet" "DB1-Subnet" {
     name           = "leg-muks-p-vnet-db1"
     address_prefix = "172.20.24.0/25"
+    location      = "${azurerm_resource_group.HubRG.location}"
+    resource_group_name = "${azurerm_resource_group.HubRG.name}"
   }
-}

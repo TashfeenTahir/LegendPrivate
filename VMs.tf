@@ -6,12 +6,8 @@ resource "azurerm_network_interface" "Network" {
 
   ip_configuration {
     name                          = "testconfiguration1"
-    subnet_id                     = "${azurerm_subnet.hubvnet.subnet.id}"
+    subnet_id                     = "${azurerm_subnet.mgmt}"
     private_ip_address_allocation = "Dynamic"
-  }
-
-  tags = {
-    environment = "staging"
   }
 }
 resource "azurerm_virtual_machine" "VM" {
