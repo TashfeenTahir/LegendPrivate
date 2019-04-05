@@ -12,7 +12,7 @@ resource "azurerm_virtual_network" "HubVNET" {
 }
 
 //Subnets
-resource "azurerm_subnet "GatewaySubnet" {
+resource "azurerm_subnet" "GatewaySubnet" {
     name           = "GatewaySubnet"
     address_prefix = "172.20.31.0/24"
     location      = "${azurerm_resource_group.HubRG.location}"
