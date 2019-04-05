@@ -10,6 +10,8 @@ resource "azurerm_virtual_network" "HubVNET" {
   location      = "${azurerm_resource_group.HubRG.location}"
   resource_group_name = "${azurerm_resource_group.HubRG.name}"
 }
+
+//Subnets
 resource "azurerm_subnet "GatewaySubnet" {
     name           = "GatewaySubnet"
     address_prefix = "172.20.31.0/24"
@@ -22,6 +24,9 @@ resource "azurerm_subnet" "MGMT1-Subnet" {
     location      = "${azurerm_resource_group.HubRG.location}"
     resource_group_name = "${azurerm_resource_group.HubRG.name}"
   }
+output "MGMTSubnet-ID" {
+  value = "${azurerm_subnet.MGMT1-Subnet.id}"
+}
 resource "azurerm_subnet" "WEB1-Subnet" {
     name           = "leg-muks-p-vnet-web1"
     address_prefix = "172.20.8.0/25"
