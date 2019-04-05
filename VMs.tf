@@ -1,12 +1,12 @@
 resource "azurerm_network_interface" "Network" {
   count                 = 4 //"${var.Count}"
   name                = "muks-org-p-nic-${count.index}"
-  location            = "${azurerm_resource_group.test.location}"
-  resource_group_name = "${azurerm_resource_group.test.name}"
+  location            = "${azurerm_resource_group.HubRG.location}"
+  resource_group_name = "${azurerm_resource_group.HubRG.name}"
 
   ip_configuration {
     name                          = "testconfiguration1"
-    subnet_id                     = "${azurerm_subnet.test.id}"
+    subnet_id                     = "${azurerm_subnet.hubvnet.subnet.id}"
     private_ip_address_allocation = "Dynamic"
   }
 
